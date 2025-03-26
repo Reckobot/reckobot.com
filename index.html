@@ -41,7 +41,7 @@
         color: white;
         font-family: Minecraft;
         overflow-x: hidden;
-        font-size: clamp(1.25vw, 10px, 30px);
+        font-size: clamp(1.25vw, 10px, 50px);
         text-shadow: 4px 4px black;
     }
     
@@ -50,6 +50,26 @@
         text-align: center;
     }
 </style>
+
+<img src="assets/jukebox.png" style="
+    position: absolute;
+    width: 196px;
+    left: calc(50vw - 98px);
+    top: 256px;
+"
+onclick="playJukebox()"
+>
+<img id="notes" src="assets/note.gif" style="
+    position: absolute;
+    width: 196px;
+    left: calc(50vw - 98px);
+    top: 84px;
+    opacity: 0;
+    pointer-events: none;
+    filter: sepia(100%) saturate(300%) brightness(70%) hue-rotate(180deg);
+"
+></img>
+</img>
 
 <h1 id="title" style="font-weight: normal;">
 reckobot.com
@@ -80,7 +100,7 @@ what i've made
     text-align: left;
     font-weight: normal;
     left: 10vw;
-    width: 25vw;"><a href="https://modrinth.com/shader/rudimentary-ps1">rudimentary</a>: an original ps1 styled shader that people really like for some reason<br></br><a href="https://modrinth.com/shader/genesis-shader">genesis</a>: a shader for modern versions that makes the game look like alpha<br></br><a href="https://modrinth.com/resourcepack/alpha-fied">alpha-fied</a>: a texture pack for beta 1.7.3 that brings back alpha textures
+    width: 30vw;"><a href="https://modrinth.com/shader/rudimentary-ps1">rudimentary</a>: an original ps1 styled shader that people really like for some reason<br></br><a href="https://modrinth.com/shader/genesis-shader">genesis</a>: a shader for modern versions that makes the game look like alpha<br></br><a href="https://modrinth.com/resourcepack/alpha-fied">alpha-fied</a>: a texture pack for beta 1.7.3 that brings back alpha textures
 </h3>
 
 <h3 id="aboutme" style="
@@ -88,7 +108,7 @@ what i've made
     text-align: right;
     font-weight: normal;
     right: 10vw;
-    width: 25vw;">hi! i'm recko. i'm a 17 year old that is passionate for all things creativity. if you like nostalgic stuff, you've come to the right place! i like to program, play piano, and do graphic design mainly.</h3>
+    width: 30vw;">hi! i'm recko. i'm a 17 year old that is passionate for all things creativity. if you like nostalgic stuff, you've come to the right place! i like to program, play piano, and do graphic design mainly.</h3>
 
 </div>
 
@@ -161,26 +181,6 @@ what i've made
         click.play();
     }
 </script>
-
-<img src="assets/jukebox.png" style="
-    position: absolute;
-    width: 15vw;
-    left: 42.5vw;
-    top: 35vh;
-"
-onclick="playJukebox()"
-></img>
-
-<img id="notes" src="assets/note.gif" style="
-    position: absolute;
-    width: 15vw;
-    left: 42.5vw;
-    top: 15vh;
-    opacity: 0;
-    pointer-events: none;
-    filter: sepia(100%) saturate(300%) brightness(70%) hue-rotate(180deg);
-"
-></img>
 
 <script>
     async function loadText(elmntid, interval){
