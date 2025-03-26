@@ -29,13 +29,16 @@
     }
 
     body {
-        background-image: url("assets/dirt.png");
-        background-size: 50vw;
+        background-color: rgba(0, 0, 0, 0.75);
+        background-blend-mode: darken;
+        background-image: url("assets/background.png");
+        background-size: 48px;
         background-repeat: repeat;
         color: white;
         font-family: Minecraft;
         overflow-x: hidden;
-        font-size: 15px;
+        font-size: clamp(1.25vw, 10px, 30px);
+        text-shadow: 4px 4px black ;
     }
     
     h1 {
@@ -72,16 +75,16 @@ what i've made
     position: relative;
     text-align: left;
     font-weight: normal;
-    left: 0vw;
-    width: 45vw;"><a href="https://modrinth.com/shader/rudimentary-ps1">rudimentary</a>: an original ps1 styled shader that people really like for some reason<br></br><a href="https://modrinth.com/shader/genesis-shader">genesis</a>: a shader for modern versions that makes the game look like alpha<br></br><a href="https://modrinth.com/resourcepack/alpha-fied">alpha-fied</a>: a texture pack for beta 1.7.3 that brings back alpha textures
+    left: 10vw;
+    width: 25vw;"><a href="https://modrinth.com/shader/rudimentary-ps1">rudimentary</a>: an original ps1 styled shader that people really like for some reason<br></br><a href="https://modrinth.com/shader/genesis-shader">genesis</a>: a shader for modern versions that makes the game look like alpha<br></br><a href="https://modrinth.com/resourcepack/alpha-fied">alpha-fied</a>: a texture pack for beta 1.7.3 that brings back alpha textures
 </h3>
 
 <h3 id="aboutme" style="
     position: absolute;
     text-align: right;
     font-weight: normal;
-    right: 0vw;
-    width: 45vw;">hi! i'm recko. i'm a 17 year old that is passionate for all things creativity. if you like nostalgic stuff, you've come to the right place! i like to program, play piano, and do graphic design mainly.</h3>
+    right: 10vw;
+    width: 25vw;">hi! i'm recko. i'm a 17 year old that is passionate for all things creativity. if you like nostalgic stuff, you've come to the right place! i like to program, play piano, and do graphic design mainly.</h3>
 
 </div>
 
@@ -90,17 +93,92 @@ what i've made
     text-align: center;
     font-weight: normal;
     width: 100vw;
+    height: 6vh;
     left: 0vw;
-    bottom: 0vh;
+    bottom: -3vh;
     background-color: rgba(0,0,0,0.5);">
     <a href="https://modrinth.com/user/Recko">modrinth</a> | <a href="https://discord.gg/Z96yU987sJ">discord</a> | <a href="https://www.youtube.com/@reckodev">youtube</a>
 </h2>
+
+<audio id="jukebox" src="assets/discs/0.ogg" loop></audio>
+<audio id="click" src="assets/sounds/click.ogg"></audio>
 
 <script>
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
+    async function startLoop(){
+        while (true) {
+            if (color >= 360){
+                color = 0;
+            }else{
+                color += 30;
+            }
+            if (jukeboxPlaying){
+                notes.style.filter = "sepia(100%) saturate(300%) brightness(70%) hue-rotate("+color+"deg)";
+                notes.src = "assets/note.gif";
+                document.body.style.backgroundColor = "hsla("+color+", 100%, 25%, 1.0)";
+            }
+            await sleep(1100);
+        }
+    }
+
+    var jukeboxPlaying = false;
+    var color = 0;
+    var firstTime = true;
+    
+    function playJukebox(){
+        let jukebox = document.getElementById('jukebox');
+        var notes = document.getElementById('notes');
+        jukebox.volume = 0.25;
+        if (jukeboxPlaying){
+            jukebox.pause();
+            jukeboxPlaying = false;
+            notes.style.opacity = 0;
+            document.body.style.backgroundColor = "rgba(0, 0, 0, 0.75)";
+            document.body.style.backgroundBlendMode = "darken";
+        }else {
+            jukebox.play();
+            jukeboxPlaying = true;
+            notes.style.opacity = 1;
+            notes.src = "assets/note.gif";
+
+            notes.style.filter = "sepia(100%) saturate(300%) brightness(70%) hue-rotate("+color+"deg)";
+            document.body.style.backgroundColor = "hsla("+color+", 100%, 25%, 1.0)";
+            document.body.style.backgroundBlendMode = "multiply";
+
+            if (firstTime){
+                startLoop();
+            }
+        }
+        firstTime = false;
+        click.volume = 0.1;
+        click.play();
+    }
+</script>
+
+<img src="assets/jukebox.png" style="
+    position: absolute;
+    width: 15vw;
+    left: 42.5vw;
+    top: 35vh;
+"
+onclick="playJukebox()"
+></img>
+
+<img id="notes" src="assets/note.gif" style="
+    position: absolute;
+    width: 15vw;
+    left: 42.5vw;
+    top: 15vh;
+    opacity: 0;
+    pointer-events: none;
+    filter: sepia(100%) saturate(300%) brightness(70%) hue-rotate(180deg);
+"
+></img>
+
+<script>
     async function loadText(elmntid, interval){
         let c = "";
         let txt = document.getElementById(elmntid).innerHTML;
