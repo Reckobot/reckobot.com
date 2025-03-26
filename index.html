@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<head>
+    <title>reckobot</title>
+    <link rel="icon" type="image/x-icon" href="assets/icon.png">
+
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta property="og:title" content="reckobot"> 
+    <meta property="og:description" content="the minecraft guy."> 
+    <meta property="og:image" content="assets/icon.ico"> 
+    <meta property="og:url" content="https://reckobot.github.io/genesis"> 
+    <meta property="og:type" content="website"> 
+    <title>Home</title>
+</head>
+
+<style>
+    @font-face { font-family: Minecraft; src: url('minecraft.ttf'); }
+
+    .grid {
+    display: grid;
+    gap: 0px;
+    grid-template-columns: repeat(2, 1fr);
+    }
+
+    a {
+        text-decoration: none;
+        color: yellow;
+    }
+
+    body {
+        background-image: url("assets/dirt.png");
+        background-size: 50vw;
+        background-repeat: repeat;
+        color: white;
+        font-family: Minecraft;
+        overflow-x: hidden;
+    }
+    
+    h1 {
+        position: relative;
+        text-align: center;
+    }
+</style>
+
+<h1 id="title" style="font-weight: normal;">
+reckobot.com
+</h1>
+
+<div class="grid">
+
+<h2 id="projectheader" style="
+    position: relative;
+    text-align: left;
+    font-weight: normal;
+    left: 10vw;">
+what i've made
+</h2>
+
+<h2 id="aboutmeheader" style="
+    position: absolute;
+    text-align: right;
+    font-weight: normal;
+    right: 10vw;">about me</h2>
+
+</div>
+
+<div class="grid">
+
+<h3 id="projects" style="
+    position: relative;
+    text-align: left;
+    font-weight: normal;
+    left: 15vw;
+    width: 30vw;"><a href="https://modrinth.com/shader/rudimentary-ps1">rudimentary</a>: an original ps1 styled shader that people really like for some reason<br></br><a href="https://modrinth.com/shader/genesis-shader">genesis</a>: a shader for modern versions that makes the game look like alpha<br></br><a href="downloads/Alpha-fied_b1.7.3_v1.zip">alpha-fied</a>: a texture pack for beta 1.7.3 that brings back alpha textures
+</h3>
+
+<h3 id="aboutme" style="
+    position: absolute;
+    text-align: right;
+    font-weight: normal;
+    right: 15vw;
+    width: 30vw;">hi! i'm recko. i'm a 17 year old that is passionate for all things creativity. if you like nostalgic stuff, you've come to the right place! i like to program, play piano, and do graphic design mainly.</h3>
+
+</div>
+
+<h2 id="socials" style="
+    position: fixed;
+    text-align: center;
+    font-weight: normal;
+    width: 100vw;
+    left: 0vw;
+    bottom: 0vh;
+    background-color: rgba(0,0,0,0.5);">
+    <a href="https://modrinth.com/user/Recko">modrinth</a> | <a href="https://discord.gg/Z96yU987sJ">discord</a> | <a href="https://www.youtube.com/@reckodev">youtube</a>
+</h2>
+
+<script>
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function loadText(elmntid, interval){
+        let c = "";
+        let txt = document.getElementById(elmntid).innerHTML;
+        for (let i = 0; i < txt.length; i++){
+            c += (txt[i]);
+            document.getElementById(elmntid).innerHTML = c;
+            await sleep(interval);
+        }
+    }
+
+    async function loadPage(){
+        loadText("title", 50);
+        loadText("projectheader", 50);
+        loadText("aboutmeheader", 50);
+        loadText("projects", 1);
+        loadText("aboutme", 1);
+        loadText("socials", 1);
+    }
+
+    window.addEventListener("load", (event) => {
+        loadPage();
+    });
+</script>
