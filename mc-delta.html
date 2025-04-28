@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<head>
+    <title>MC-Delta</title>
+    <link rel="icon" type="image/x-icon" href="mcdelta/logo.png">
+
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta property="og:title" content="mc-delta"> 
+    <meta property="og:description" content="the minecraft guy."> 
+    <meta property="og:image" content="mcdelta/logo.ico"> 
+    <meta property="og:url" content="https://reckobot.github.io/genesis/mc-delta"> 
+    <meta property="og:type" content="website"> 
+    <title>MC-Delta</title>
+</head>
+
+<style>
+    @font-face { font-family: Minecraft; src: url('minecraft.ttf'); }
+
+    .grid {
+    display: grid;
+    gap: 0px;
+    grid-template-columns: repeat(2, 1fr);
+    }
+
+    html {
+        cursor: url("assets/cursor.png"), pointer;
+    }
+
+    a {
+        text-decoration: none;
+        color: yellow;
+    }
+
+    body {
+        background-image: url("mcdelta/screenshot.webp");
+        background-size: cover;
+        background-repeat: repeat;
+        color: white;
+        font-family: Minecraft;
+        overflow-x: hidden;
+        font-size: clamp(1.375vw, 10px, 50px);
+        text-shadow: 2px 2px black;
+    }
+    
+    h1 {
+        position: relative;
+        text-align: center;
+    }
+</style>
+
+<h1 id="title" style="font-weight: normal;">
+MC-Delta
+</h1>
+
+<div class="grid">
+
+<h2 id="instructionheader" style="
+    position: relative;
+    text-align: left;
+    font-weight: normal;
+    left: 5vw;">
+<a href="downloads/MC_Delta-v1.0.zip">Download</a>
+</h2>
+
+<h2 id="projectheader" style="
+    position: absolute;
+    text-align: right;
+    font-weight: normal;
+    right: 5vw;">Features</h2>
+</div>
+
+<div class="grid">
+
+<h3 id="instructions" style="
+    position: relative;
+    text-align: left;
+    font-weight: normal;
+    left: 5vw;
+    width: 40vw;">
+- Download Prism or MultiMC<br>- Create instance of Alpha v1.1.2_01<br>- Edit instance<br>- Go to version section<br>- Click "Add to Minecraft.jar"<br>- Select the zip file you downloaded<br>- Have fun!
+</h3>
+
+<h3 id="description" style="
+    position: absolute;
+    text-align: left;
+    font-weight: normal;
+    right: 5vw;
+    width: 35vw;
+    font-size: clamp(1.125vw, 10px, 50px);">- Adds a "pretty visuals" mode (toggleable) that changes foliage colors, sky and fog colors, and water color<br>
+- Adds a brightness slider that clamps how dark shadows and caves can be in rendering<br>
+- Adds an FOV slider<br>
+- Makes the F3 toggle rather than the user having to hold down F3<br>
+- Adds player coordinates to F3 menu<br>
+- Makes the alpha watermark toggleable<br>
+- Binds F1 to rotate between hidden UI, hidden hand and hidden UI, and standard visibility<br>
+- Backports screenshot feature from later alpha versions<br>
+- Changes main menu background to cobblestone<br>
+- Sets default inventory keybind to E</h3>
+</div>
+
+<script>
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function loadText(elmntid, interval){
+        let c = "";
+        let txt = document.getElementById(elmntid).innerHTML;
+        for (let i = 0; i < txt.length; i++){
+            c += (txt[i]);
+            document.getElementById(elmntid).innerHTML = c;
+            await sleep(interval);
+        }
+    }
+
+    async function loadPage(){
+        loadText("title", 50);
+        loadText("projectheader", 50);
+        loadText("instructionheader", 1);
+        loadText("description", 1);
+        loadText("instructions", 1);
+    }
+
+    window.addEventListener("load", (event) => {
+        loadPage();
+    });
+</script>
