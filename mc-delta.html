@@ -33,6 +33,8 @@
     }
 
     body {
+        background-color: rgba(0, 0, 0, 0.5);
+        background-blend-mode: darken;
         background-image: url("mcdelta/screenshot.webp");
         background-size: cover;
         background-repeat: repeat;
@@ -50,8 +52,16 @@
 </style>
 
 <h1 id="title" style="font-weight: normal;">
-MC-Delta
+Minecraft: Delta Edition
 </h1>
+
+<h2 id="subtitle" style="
+    position: relative;
+    text-align: center;
+    font-weight: normal;
+    ">
+A mod for Minecraft Alpha v1.1.2_01
+</h2>
 
 <div class="grid">
 
@@ -115,8 +125,9 @@ MC-Delta
     }
 
     async function loadPage(){
-        loadText("title", 50);
-        loadText("projectheader", 50);
+        loadText("title", 25);
+        loadText("subtitle", 25);
+        loadText("projectheader", 25);
         loadText("instructionheader", 1);
         loadText("description", 1);
         loadText("instructions", 1);
